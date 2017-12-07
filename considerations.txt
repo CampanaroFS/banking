@@ -1,0 +1,14 @@
+The project was developed over a Maven Project. 
+It means you can run the test just with:
+
+mvn install
+mvn test
+
+Below, there are some considerations related to the implementation and about b and d items.
+
+b) I believe that create a method named “provideInterestToAllUsers” does not seem a good idea, because the interest value is obtained by a calculation with an instance attribute (balance) and a class or static attribute (interest_rate). An static method, like “provideInterestToAllUsers”, could not access instance variables (balance), consequently, it wouldn’t be possible to calculate interests for all users at the same time. So, I provided an instance method called “provideInterest” that calculates the interest for each account individually and updates the balance.
+
+d) Due the hierarchy, the superclass Account holds default implementation of usual behaviors of any account, such as deposit and withdraw. That is the reason I’m still using Account class to test these default behaviors. On the other hand, when any subclass overrides any of these methods, I apply new tests for these new implementations. It prevents duplicate tests on the same methods.
+
+
+Marcio Branquinho Dutra
